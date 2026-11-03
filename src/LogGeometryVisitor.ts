@@ -1,6 +1,6 @@
 import GeometryVisitor from "./GeometryVisitor";
-import Point from "./Point";
-import LineString from "./LineString";
+import type Point from "./Point";
+import type LineString from "./LineString";
 import formatNumber from "./formatNumber";
 
 export default class LogGeometryVisitor implements GeometryVisitor {

@@ -48,5 +48,9 @@ describe("test Point", () => {
     it("test getEnvelope empty point", () => {
         expect(new Point().getEnvelope().isEmpty()).to.be.true;
     });
+    it("test asText", () => {
+        expect(new Point([3.0,4.0]).asText()).to.equal("POINT(3.0 4.0)");
+        expect(new Point().asText()).to.equal("POINT EMPTY");
+    });
 });
 

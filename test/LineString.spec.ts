@@ -56,4 +56,13 @@ describe("test LineString", () => {
     it("test getEnvelope empty linestring", () => {
         expect(new LineString().getEnvelope().isEmpty()).to.be.true;
     });
+    it("test asText", () => {
+        const l = new LineString([
+            new Point([0.0,0.0]),
+            new Point([1.0,1.0]),
+            new Point([5.0,5.0])
+        ]);
+        expect(l.asText()).to.equal("LINESTRING(0.0 0.0,1.0 1.0,5.0 5.0)");
+        expect(new LineString().asText()).to.equal("LINESTRING EMPTY");
+    });
 });
