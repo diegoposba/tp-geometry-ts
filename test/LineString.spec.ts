@@ -30,4 +30,19 @@ describe("test LineString", () => {
         l.translate(1.0,2.0);
         expect(l.isEmpty()).to.be.true;
     });
+    it("test clone", () => {
+        const l = new LineString([new Point([0.0,0.0]), new Point([3.0,4.0])]);
+        const copy = l.clone();
+        expect(copy).to.not.equal(l);
+        expect(copy.getNumPoints()).to.equal(2);
+        expect(copy.getPointN(0)).to.not.equal(l.getPointN(0));
+        copy.translate(10.0,10.0);
+        expect(copy.getPointN(1).getCoordinate()).to.deep.equal([13.0,14.0]);
+        expect(l.getPointN(0).getCoordinate()).to.deep.equal([0.0,0.0]);
+        expect(l.getPointN(1).getCoordinate()).to.deep.equal([3.0,4.0]);
+    });
+    it("test clone empty linestring", () => {
+        const copy = new LineString().clone();
+        expect(copy.isEmpty()).to.be.true;
+    });
 });
