@@ -41,5 +41,12 @@ describe("test Point", () => {
         const copy = new Point().clone();
         expect(copy.isEmpty()).to.be.true;
     });
+    it("test getEnvelope", () => {
+        const p = new Point([3.0,4.0]);
+        expect(p.getEnvelope().toString()).to.equal("[3,4,3,4]");
+    });
+    it("test getEnvelope empty point", () => {
+        expect(new Point().getEnvelope().isEmpty()).to.be.true;
+    });
 });
 

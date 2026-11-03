@@ -45,4 +45,15 @@ describe("test LineString", () => {
         const copy = new LineString().clone();
         expect(copy.isEmpty()).to.be.true;
     });
+    it("test getEnvelope", () => {
+        const l = new LineString([
+            new Point([0.0,1.0]),
+            new Point([2.0,0.0]),
+            new Point([1.0,3.0])
+        ]);
+        expect(l.getEnvelope().toString()).to.equal("[0,0,2,3]");
+    });
+    it("test getEnvelope empty linestring", () => {
+        expect(new LineString().getEnvelope().isEmpty()).to.be.true;
+    });
 });
