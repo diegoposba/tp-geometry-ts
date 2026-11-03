@@ -1,6 +1,7 @@
 import GeometryVisitor from "./GeometryVisitor";
 import Point from "./Point";
 import LineString from "./LineString";
+import formatNumber from "./formatNumber";
 
 export default class LogGeometryVisitor implements GeometryVisitor {
   visitPoint(point: Point): void {
@@ -8,7 +9,7 @@ export default class LogGeometryVisitor implements GeometryVisitor {
       console.log("Je suis un point vide.");
     } else {
       console.log(
-        `Je suis un point avec x=${this.formatNumber(point.x())} et y=${this.formatNumber(point.y())}.`
+        `Je suis un point avec x=${formatNumber(point.x())} et y=${formatNumber(point.y())}.`
       );
     }
   }
@@ -21,9 +22,5 @@ export default class LogGeometryVisitor implements GeometryVisitor {
         `Je suis une polyligne définie par ${lineString.getNumPoints()} point(s).`
       );
     }
-  }
-
-  private formatNumber(value: number): string {
-    return Number.isInteger(value) ? value.toFixed(1) : value.toString();
   }
 }

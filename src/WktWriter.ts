@@ -1,6 +1,7 @@
 import Geometry from "./Geometry";
 import Point from "./Point";
 import LineString from "./LineString";
+import formatNumber from "./formatNumber";
 
 export default class WktWriter {
   write(geometry: Geometry): string {
@@ -24,13 +25,6 @@ export default class WktWriter {
   }
 
   private formatPoint(point: Point): string {
-    return `${this.formatNumber(point.x())} ${this.formatNumber(point.y())}`;
-  }
-
-  /**
-   * Formate un nombre en conservant au moins une décimale (3 -> "3.0", 1.25 -> "1.25")
-   */
-  private formatNumber(value: number): string {
-    return Number.isInteger(value) ? value.toFixed(1) : value.toString();
+    return `${formatNumber(point.x())} ${formatNumber(point.y())}`;
   }
 }
